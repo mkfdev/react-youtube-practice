@@ -4,5 +4,9 @@
 }
 
 .container {
-  max-width: 64rem;
+  max-width: 80rem;
+}
+
+.content {
+  display: flex;
 }
