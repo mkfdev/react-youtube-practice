@@ -1,0 +1,40 @@
+.header {
+  display: flex;
+  height: 6rem;
+  padding: 0 .5em;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-right: 3em;
+}
+
+.logoImg {
+  height: 100%;
+}
+
+.input, .button {
+  align-self: center;
+  height: 3em;
+  padding: .8em .9em;
+  border-radius: 4em;
+  outline: 0;
+}
+
+.input {
+  flex-basis: 100%;
+  margin-right: .5em;
+}
+
+.button {
+  flex-shrink: 0;
+  border: 0;
+  color: #fff;
+  background-color: #8d6e63;
+  cursor: pointer;
+}
+
+.button img {
+  height: 100%;
+}
