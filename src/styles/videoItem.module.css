@@ -1,0 +1,18 @@
+.item {
+  display: flex;
+  flex-direction: column;
+  width: 33.3%;
+  padding: 1em .5em;
+  box-sizing: border-box;
+}
+
+.metadata {
+  margin: .4em 0 .4em .2em;
+}
+.title {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.channelTitle {
+  font-size: .8rem;
+}
