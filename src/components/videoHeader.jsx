@@ -6,11 +6,10 @@ const VideoHeader = ({ onSearch }) => {
   const inputRef = useRef();
 
   const onKeyPress = event => {
-    if (event.key == 'Enter') {
+    if (event.key === 'Enter') {
       onSearch(inputRef.current.value);
       inputRef.current.value = '';
     }
-    
   };
 
   const onClick = () => {

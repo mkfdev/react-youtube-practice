@@ -3,33 +3,20 @@ import VideoList from './components/videoList';
 import styles from './app.module.css';
 import VideoHeader from './components/videoHeader';
 
-const App = () => {
+const App = ({youtube}) => {
   const [videos, setVideos] = useState([]);
 
   const searchVideo = query => {
-    console.log(`result: ${query}!!`);
-    const requestOptions = {
-      method: 'GET',
-      redirect: 'follow'
-    };
-    
-    fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${query}&type=video&key=AIzaSyAKwAAQxlZ3fzxMKZgkxHGjKoBsb6w0_oA`, requestOptions)
-      .then(response => response.json())
-      .then(result => setVideos(result.items))
-      .catch(error => console.log('error', error));
+    youtube
+      .search(query)
+      .then(videos => setVideos(videos));
   };
   
   useEffect(() => {
-    const requestOptions = {
-      method: 'GET',
-      redirect: 'follow'
-    };
-    
-    fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&key=AIzaSyAKwAAQxlZ3fzxMKZgkxHGjKoBsb6w0_oA", requestOptions)
-      .then(response => response.json())
-      .then(result => setVideos(result.items))
-      .catch(error => console.log('error', error));
-  }, [])
+    youtube
+      .mostPopular()
+      .then(videos => setVideos(videos));
+  }, [youtube])
   
   
   return (
