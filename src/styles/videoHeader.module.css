@@ -38,3 +38,32 @@
 .button img {
   height: 100%;
 }
+
+@media screen and (min-width: 490px) and (max-width: 560px) {
+  .logo {
+    flex-basis: 100%;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .header { 
+    flex-wrap: wrap;
+    justify-content: center;
+    height: auto;
+    padding-bottom: 1.2em;
+  }
+
+  .logo {
+    margin-right: 0;
+  }
+
+  .logoImg {
+    width: 6rem;
+    height: auto;
+  }
+
+  .input {
+    flex-basis: auto;
+  }
+}

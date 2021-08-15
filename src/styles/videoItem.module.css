@@ -39,14 +39,32 @@
 }
 
 .metadata {
-  margin: .4em 1em;
+  margin: .4em .5em;
 }
 
 .title {
+  height: 2.625rem;
   font-size: 1rem;
   font-weight: bold;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .channelTitle {
   font-size: .8rem;
+}
+
+@media screen and (max-width: 768px) {
+  .item.column {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .item.column {
+    width: 100%;
+  }
 }
