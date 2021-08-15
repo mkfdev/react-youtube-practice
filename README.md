@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# React Youtube Clone Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+* [1. 프로젝트 목적](#list-1)
+* [2. 사용한 기술 및 툴](#list-2)
+* [3. 프로젝트 구현 내용](#list-3)
+* [4. 추가로 수정한 것](#list-4)
+* [5. 배운 것](#list-5)
 
-## Available Scripts
+## 프로젝트 목적 <a id="list-1"></a>
+- 실습을 통한 리액트 이해
+- API 학습과 활용
+- 다음 프로젝트를 진행하기 위해 기본 다지기
 
-In the project directory, you can run:
+## 사용한 기술 및 툴 <a id="list-2"></a>
+React, Javascript, PostCss, axios, Postman
 
-### `yarn start`
+## 프로젝트 구현 내용 <a id="list-3"></a>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 1. API
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+baseurl: https://youtube.googleapis.com/youtube/v3
 
-### `yarn test`
+- GET
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| url   | 기능  |
+| :----: | :----: |
+| /videos | 인기 영상 |
+| /search  | 검색 영상 |
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- query
+  - part: snippet
+  - maxResult: 25
+  - type: video
+  - chart: mostPopular
+  - q: ${query}
+  - key: private
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 2. React
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- React Hooks 사용
 
-### `yarn eject`
+- state
+  - videos: youtube 동영상 요청 후 받아온 데이터를 업데이트
+  - selectedVideos: 동영상 선택 후 선택된 video를 저장하는 state
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- 컴포넌트 구성
+  - VideoHeader
+  - VideoList
+  - VideoItem
+  - VideoDetailView
+  
+![image](https://user-images.githubusercontent.com/32028959/129474189-b33752d2-69e0-4d44-a3cf-ff709b53196f.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![image](https://user-images.githubusercontent.com/32028959/129474262-718f1a71-1002-449e-9839-9f2cdbed7bc8.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 추가로 수정한 것 <a id="list-4"></a>
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 배운 것 <a id="list-5"></a>
