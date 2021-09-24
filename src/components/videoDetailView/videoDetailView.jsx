@@ -1,12 +1,11 @@
 import React from "react";
-import styles from '../styles/videoDetailView.module.css';
+import styles from './videoDetailView.module.css';
 import decode from "unescape";
 
 const VideoDetailView = ({video}) => {
   const decodeChar = title => {
     return decode(title);
   };
-  
   return (
     <section className={styles.detail}>
       <iframe className={styles.video} 

@@ -1,5 +1,5 @@
 import React, { memo, useRef } from "react";
-import styles from '../styles/videoHeader.module.css';
+import styles from './videoHeader.module.css';
 
 const VideoHeader = memo(({ onSearch, goHome }) => {
     const inputRef = useRef();

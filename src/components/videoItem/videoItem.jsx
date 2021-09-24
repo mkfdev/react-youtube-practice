@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import styles from "../styles/videoItem.module.css";
+import styles from "./videoItem.module.css";
 import decode from "unescape";
 
 const VideoItem = memo(({ video, display, handleSelectVideo }) => {

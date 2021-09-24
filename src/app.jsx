@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import VideoList from './components/videoList';
-import styles from './app.module.css';
-import VideoHeader from './components/videoHeader';
-import VideoDetailView from './components/videoDetailView';
 import { useHistory } from 'react-router';
+import VideoHeader from './components/videoHeader/videoHeader';
+import VideoDetailView from './components/videoDetailView/videoDetailView';
+import VideoList from './components/videoList/videoList';
+import styles from './app.module.css';
 
 const App = ({youtube}) => {
   const [videos, setVideos] = useState([]);
