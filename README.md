@@ -1,70 +1,139 @@
-# Getting Started with Create React App
+# React Youtube Clone Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+* [1. 프로젝트 목적](#list-1)
+* [2. 사용한 기술 및 툴](#list-2)
+* [3. 프로젝트 구현 내용](#list-3)
+* [4. 라이브러리 및 배포](#list-4)
+* [5. 알게된 것](#list-5)
 
-## Available Scripts
+## 프로젝트 목적 <a id="list-1"></a>
+- 실습을 통한 리액트 이해
+- API 학습과 활용
+- 다음 프로젝트를 진행하기 위해 기본 다지기
 
-In the project directory, you can run:
+## 사용한 기술 및 툴 <a id="list-2"></a>
+React, Javascript, PostCss, axios, Postman
 
-### `yarn start`
+## 프로젝트 구현 내용 <a id="list-3"></a>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 1. API
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+baseurl: https://youtube.googleapis.com/youtube/v3
 
-### `yarn test`
+- GET
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| url   | 목적  |
+| :----: | :----: |
+| /videos | 인기 영상 |
+| /search  | 검색 영상 |
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- query
+  - part: snippet
+  - maxResult: 25
+  - type: video
+  - chart: mostPopular
+  - q: ${query}
+  - key: private
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 2. React
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- React Hooks 사용
 
-### `yarn eject`
+- state
+  - videos: youtube 동영상 요청 후 받아온 데이터를 업데이트
+  - selectedVideos: 동영상 선택 후 선택된 video를 저장하는 state
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- 컴포넌트 구성
+  - VideoHeader
+  - VideoList
+  - VideoItem
+  - VideoDetailView
+  
+![image](https://user-images.githubusercontent.com/32028959/129474189-b33752d2-69e0-4d44-a3cf-ff709b53196f.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![image](https://user-images.githubusercontent.com/32028959/129478879-39db9025-36a9-4f07-a0eb-70fca1e48081.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- 주요 기능
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1. Most Popular 동영상 25개 보여주기
+   - Component가 Mount 되었을 때 API를 통해 Most Popular 비디오 데이터를 가져온다. 
+   - react hooks useEffect(() => {}, [])로 구현
+ 
+ ```
+ const App = ({youtube}) => {
+ ...
+ useEffect(() => {
+    youtube
+      .mostPopular() //
+      .then(videos => setVideos(videos));
+  }, [youtube]);
+  ...
+  }
+  ```
+  
+2. 검색 동영상 25개 보여주기  
+    - ViedoHeader 컴포넌트에 onSearch props를 전달해서 input의 value(검색키워드)를 가져온다.
+    - input의 value값을 query로 전달하여 해당하는 비디오 데이터를 가져온다.
+    - videos state를 해당 비디오 목록으로 update 해준다.
 
-## Learn More
+```
+const searchVideo = query => (
+  setSelectedVideo(null);
+  youtube 
+    .search(query)
+    .then(videos => {
+      setVideos(videos);
+    });
+);
+  
+return (
+  <VideoHeader onSearch={searchVideo}/>
+  ...
+);
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. 선택한 영상 보여주기(Detail View)
+    - ViedoList컴포넌트에 handleSelectVideo props 전달하여 video 선택 시(클릭 이벤트가 일어날 때) 해당하는 video를 전달한다.
+    - 해당하는 video를 selectedVideo state에 업데이트하고, selectedVideo 값이 있으면 Detail View를 보여준다.
 
-### Code Splitting
+```
+const [selectedVideo, setSelectedVideo] = useState(null);
+const handleSelectVideo = video => {
+  setSelectedVideo(video);
+};
+  
+return(
+  {
+    selectedVideo && <VideoDetailView video={selectedVideo}/>
+  }
+  ...
+  <VideoList handleSelectVideo={handleSelectVideo}/>
+  ...
+);
+            
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+## 라이브러리 및 배포 <a id="list-4"></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+1. JSON문자 코드 변환하기 : *unescape library 사용*
 
-### Making a Progressive Web App
+``` yarn add --save unescape ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```
+import decode from "unescape";
+const decodeChar = title => {
+  return decode(title);
+};
+```
+=> decodeChar를 정의하여 title, channelTitle의 entities code를 문자코드로 변환했다.
 
-### Advanced Configuration
+![image](https://user-images.githubusercontent.com/32028959/129480879-2d741691-8d0c-4d60-b6c5-d677a8abc486.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+![image](https://user-images.githubusercontent.com/32028959/129480881-76eaa658-4c12-4b63-83b7-b868152784ae.png)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 배운 내용 <a id="list-5"></a>
 
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
