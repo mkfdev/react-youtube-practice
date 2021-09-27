@@ -165,7 +165,5 @@ const decodeChar = title => {
 
 ![image](https://user-images.githubusercontent.com/32028959/129480881-76eaa658-4c12-4b63-83b7-b868152784ae.png)
 
-2. axios 
-
-3. 배포: Netlify
+2. 배포: Netlify
  - https://61517ed6f581d86b29e68b0f--mk-react-youtube.netlify.app
