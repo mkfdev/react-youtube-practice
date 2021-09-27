@@ -168,5 +168,4 @@ const decodeChar = title => {
 2. axios 
 
 3. 배포: Netlify
-
-https://61517ed6f581d86b29e68b0f--mk-react-youtube.netlify.app
+ - https://61517ed6f581d86b29e68b0f--mk-react-youtube.netlify.app
