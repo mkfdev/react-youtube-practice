@@ -122,7 +122,7 @@ return(
 );
             
 
-## 진행하며 배운 것들 <a id="list-5"></a>
+### 진행하며 배운 것들 <a id="list-5"></a>
 
 1. index.js에서 service를 주입하여 app으로 전달하도록 한다. (성능향상)
 - (index.js) const youtube = new Youtube(httpClient);
@@ -167,3 +167,5 @@ const decodeChar = title => {
 2. axios 
 
 3. 배포: Netlify
+
+https://61517ed6f581d86b29e68b0f--mk-react-youtube.netlify.app
