@@ -120,6 +120,7 @@ return(
   <VideoList handleSelectVideo={handleSelectVideo}/>
   ...
 );
+```
             
 
 ### 진행하며 배운 것들 <a id="list-5"></a>
@@ -146,7 +147,7 @@ return(
 - 편했던 점, 여러 컴포넌트의 버튼에 btn, 타이틀에 title이라는 className을 지정해도 (각 컴포넌트에 연결된 styles가 있기 때문에) 스타일이 중복되지 않고 작업하기가 편했다.
 
 
-## 라이브러리 및 배포 <a id="list-4"></a>
+### 라이브러리 및 배포 <a id="list-4"></a>
 
 1. JSON문자 코드 변환하기 : *unescape library 사용*
 
