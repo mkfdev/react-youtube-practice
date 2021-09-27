@@ -6,11 +6,14 @@
 
 .logo {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   margin-right: 3em;
+  cursor: pointer;
 }
 
 .logoImg {
+  width: 96px;
   height: 100%;
 }
 
